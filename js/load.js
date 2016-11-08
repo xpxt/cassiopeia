@@ -1,1 +1,3 @@
-
+app.get.i ([
+	'start',
+]);
