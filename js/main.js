@@ -1,6 +1,6 @@
 app.scene.load = function () {
+	window.document.body.style.background = '#000';
 	app.scene.menu ();
-
 }
 
 app.scene.menu = function () {

@@ -126,6 +126,11 @@ var app = {
 			return button;
 		},
 
+		link: function (_) {
+			let link = app.create.text (app.create.button (_));
+			return link;
+		},
+
 		object: function (_) {
 			let object = _ || {};
 				object.id = _.id || app.id++;
@@ -153,18 +158,20 @@ var app = {
 			let text = app.create.box (_);
 				text.color = _.color || '#000';
 				text.font = _.font || 'Arial';
+				text.h = _.h || _.size;
 				text.size = _.size || '12';
 				text.text = _.text;
+				text.w = app.get.font.width (text);
 
 				text.draw = function () {
 					if (text.fill != 'transparent') {
 						context.fillStyle = text.fill;
-						context.fillRect (text.x, text.y - text.size, app.get.font.width (text), text.size);
+						context.fillRect (text.x, text.y, app.get.font.width (text), text.size);
 					}
 
 					context.fillStyle = text.color;
 					context.font = text.size + 'px ' + text.font;
-					context.textBaseline = 'bottom';
+					context.textBaseline = 'top';
 					context.fillText (text.text, text.x, text.y);
 				}
 
