@@ -1,3 +1,4 @@
 app.get.i ([
-	'start',
+	'ship',
+	'start'
 ]);

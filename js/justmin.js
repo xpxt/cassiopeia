@@ -158,8 +158,8 @@ var app = {
 			let text = app.create.box (_);
 				text.color = _.color || '#000';
 				text.font = _.font || 'Arial';
-				text.h = _.h || _.size;
-				text.size = _.size || '12';
+				text.h = _.h || _.size || '12';
+				text.size = text.h;
 				text.text = _.text;
 				text.w = app.get.font.width (text);
 
@@ -217,6 +217,18 @@ var app = {
 						app.a[name].push (image);
 				}
 			}
+		},
+
+		ab: function (a, b) {
+			return Math.sqrt (Math.pow (a.x - b.x, 2) + Math.pow (a.y - b.y, 2));
+		},
+
+		abr: function (a, b, r) {
+			let ab = app.get.ab (a, b);
+			let k = r / (ab - r);
+			let x = (a.x + k * b.x) / (1 + k);
+			let y = (a.y + k * b.y) / (1 + k);
+			return { x: x, y: y };
 		},
 
 		binbox: function (a, b) {
